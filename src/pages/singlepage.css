@@ -1,0 +1,41 @@
+#singlepage {
+    height: 100vh;
+}
+
+.container-singlepage {
+    min-height: 76vh;
+    padding: 0 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+#singlepage img {
+    height: 700px;
+}
+
+#singlepage .wrapper {
+    display: flex;
+}
+
+#singlepage .seasonDate {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#singlepage .left-wrapper {
+    display: flex;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.container-singlepage>h1 {
+    margin: 10px 0;
+}
+
+#singlepage .summary {
+    margin: 10px 0;
+    padding-bottom: 10px;
+}

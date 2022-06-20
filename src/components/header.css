@@ -1,0 +1,41 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(13, 38, 84);
+  padding: 10px 150px;
+  color: white;
+  align-items: center;
+
+}
+
+#header input {
+  padding: 10px;
+  border: none;
+  /* border-radius: 25px; */
+  width: 200px;
+  outline-color: rgb(187, 158, 30);
+}
+
+#header .search-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  margin-left: 20px;
+  border: 2px solid rgb(187, 158, 30);
+  letter-spacing: 1px;
+  transition: 200ms;
+}
+
+#header .search-button:hover {
+  background-color: rgb(187, 158, 30);
+  color: #0b354d;
+}
+
+#header h2:hover {
+  color: rgb(187, 158, 30);
+  cursor: pointer;
+  transition: 200ms;
+}
