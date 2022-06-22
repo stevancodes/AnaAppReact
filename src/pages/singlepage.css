@@ -4,7 +4,7 @@
 
 .container-singlepage {
     min-height: 76vh;
-    padding: 0 300px;
+    padding: 0 28vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
