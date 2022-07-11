@@ -74,7 +74,7 @@ class SinglePage extends Component {
           <h1>{this.props.movie.name}</h1>
           <div className="wrapper">
             <div className="left-wrapper">
-              <img src={this.props.movie.image.original} alt="slika"></img>
+              <img src={this.props?.movie.image.original} alt="slika"></img>
             </div>
             <div className="right-wrapper">
               <h2 className="seasons">Seasons ({this.props.seasons.length})</h2>
