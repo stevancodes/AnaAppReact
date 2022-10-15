@@ -74,18 +74,18 @@ class SinglePage extends Component {
           <h1>{this.props.movie.name}</h1>
           <div className="wrapper">
             <div className="left-wrapper">
-              <img src={this.props?.movie.image.original} alt="slika"></img>
+              {this.props.movie.hasOwnProperty('original') || this.props.movie.image ? (<img src={this.props?.movie?.image?.original} alt="slika"></img>) : (<img src={"https://lexingtonvenue.com/media/poster-placeholder.jpg"} alt="slika"></img>)}
             </div>
             <div className="right-wrapper">
               <h2 className="seasons">Seasons ({this.props.seasons.length})</h2>
-              <div className="seasonDate">{this.props.seasons.map((element, index) => <p key={index}>{`${element.premiereDate} - ${element.endDate}`}</p>)}</div>
+              <div className="seasonDate">{this.props.seasons?.map((element, index) => <p key={index}>{`${element.premiereDate} - ${element.endDate}`}</p>)}</div>
               <h2 className="cast">Cast</h2>
-              <div className="castWrapper">{this.props.cast.map((element, index) => <p key={index}>{element.person.name}</p>).filter((e, i) => i < 15)}</div>
+              <div className="castWrapper">{this.props.cast?.map((element, index) => <p key={index}>{element.person.name}</p>).filter((e, i) => i < 15)}</div>
             </div>
           </div>
           <h2>Show Details</h2>
           <div className="summary">
-            <p>{(this.props.movie.summary).replaceAll(/(<([^>]+)>)/ig, "")}</p>
+            <p>{(this.props?.movie?.summary)?.replaceAll(/(<([^>]+)>)/ig, "")}</p>
           </div>
         </div>
         <Footer />
