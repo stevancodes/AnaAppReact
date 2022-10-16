@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "./singlepage.css"
+import "./singlepage.css";
 
 class SinglePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       btnClicked: false,
-      search: ""
+      search: "",
     };
   }
   fetchDataBtn() {
@@ -17,13 +17,12 @@ class SinglePage extends Component {
       .then((response) =>
         this.setState(
           {
-            data2: response
-              .sort((a, b) => b.show.rating.average - a.show.rating.average)
-              .filter((e, i) => i < 50),
+            data2: response.sort((a, b) => b.show.rating.average - a.show.rating.average).filter((e, i) => i < 50),
           },
           () => console.log(this.state)
         )
-      ).then(() => this.setState({ btnClicked: true }))
+      )
+      .then(() => this.setState({ btnClicked: true }));
   }
 
   fetchDataInitial() {
@@ -43,10 +42,9 @@ class SinglePage extends Component {
     this.setState({
       search: event.target.value,
     });
-
   }
   handleFetchBtn() {
-    this.fetchDataBtn.call(this)
+    this.fetchDataBtn.call(this);
   }
 
   fetchDataRecomend() {
@@ -55,42 +53,60 @@ class SinglePage extends Component {
       .then((response) =>
         this.setState(
           {
-            data3: response
-              .sort((a, b) => b.show.rating.average - a.show.rating.average)
-              .filter((e, i) => i < 50),
+            data3: response.sort((a, b) => b.show.rating.average - a.show.rating.average).filter((e, i) => i < 50),
           },
           () => console.log(this.state)
         )
-      )
+      );
   }
   handleFetchRecomend() {
-    this.fetchDataRecomend.call(this)
+    this.fetchDataRecomend.call(this);
   }
   render() {
     return (
       <div id="singlepage">
-        <Header funkcija={this.props.backToHome.bind(this)} handleQuery={this.handleQuery.bind(this)} handleFetchBtn={this.handleFetchBtn.bind(this)} handleFetchRecomend={this.handleFetchRecomend.bind(this)} movies={this.state.data3} funkcija2={this.props.funkcionalnostSinglePage} btnClicked={this.state.btnClicked} />
+        <Header
+          funkcija={this.props.backToHome.bind(this)}
+          handleQuery={this.handleQuery.bind(this)}
+          handleFetchBtn={this.handleFetchBtn.bind(this)}
+          handleFetchRecomend={this.handleFetchRecomend.bind(this)}
+          movies={this.state.data3}
+          funkcija2={this.props.funkcionalnostSinglePage}
+          btnClicked={this.state.btnClicked}
+        />
         <div className="container-singlepage">
           <h1>{this.props.movie.name}</h1>
           <div className="wrapper">
             <div className="left-wrapper">
-              {this.props.movie.hasOwnProperty('original') || this.props.movie.image ? (<img src={this.props?.movie?.image?.original} alt="slika"></img>) : (<img src={"https://lexingtonvenue.com/media/poster-placeholder.jpg"} alt="slika"></img>)}
+              {this.props.movie.hasOwnProperty("original") || this.props.movie.image ? (
+                <img src={this.props?.movie?.image?.original} alt="slika"></img>
+              ) : (
+                <img src={"https://lexingtonvenue.com/media/poster-placeholder.jpg"} alt="slika"></img>
+              )}
             </div>
             <div className="right-wrapper">
-              <h2 className="seasons">Seasons ({this.props.seasons.length})</h2>
-              <div className="seasonDate">{this.props.seasons?.map((element, index) => <p key={index}>{`${element.premiereDate} - ${element.endDate}`}</p>)}</div>
+              <h2 className="seasons">Seasons ({this?.props?.seasons?.length})</h2>
+              <div className="seasonDate">
+                {this.props.seasons?.map((element, index) => (
+                  <p key={index}>{`${element.premiereDate} - ${element.endDate}`}</p>
+                ))}
+              </div>
               <h2 className="cast">Cast</h2>
-              <div className="castWrapper">{this.props.cast?.map((element, index) => <p key={index}>{element.person.name}</p>).filter((e, i) => i < 15)}</div>
+              <div className="castWrapper">
+                {this.props.cast
+                  ?.map((element, index) => <p key={index}>{element.person.name}</p>)
+                  .filter((e, i) => i < 15)}
+              </div>
             </div>
           </div>
           <h2>Show Details</h2>
           <div className="summary">
-            <p>{(this.props?.movie?.summary)?.replaceAll(/(<([^>]+)>)/ig, "")}</p>
+            <p>{this.props?.movie?.summary?.replaceAll(/(<([^>]+)>)/gi, "")}</p>
           </div>
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
